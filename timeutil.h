@@ -10,6 +10,10 @@
 #ifndef _TIMEUTIL_H_
 #define _TIMEUTIL_H_
 
+#ifdef _MSC_VER
+# pragma warning (disable: 4996)
+#endif /* _MSC_VER */
+
 #include <ctime>
 #include <string>
 
@@ -58,6 +62,8 @@ using namespace std;
 #endif
 
 
+typedef struct tm * tm_ptr;
+
 template <typename CharT>
 class CTimeUtilTempl
 {
@@ -75,7 +81,7 @@ public:
 	int Hour() const;
 	int Minute() const;
 	int Second() const;
-	struct tm *CurrentTime() const;
+	tm_ptr CurrentTime() const;
 	std::basic_string<CharT> Now() const;
 	std::basic_string<CharT> Yesterday(int year, int month, int day,
 					 int hour = 0, int min = 0, int sec = 0) const;
@@ -149,7 +155,7 @@ int CTimeUtilTempl<CharT>::Second() const {
 }
 
 template <typename CharT>
-struct tm * CTimeUtilTempl<CharT>::CurrentTime() const {
+tm_ptr CTimeUtilTempl<CharT>::CurrentTime() const {
 	time_t _cur_time = time(NULL);
 	return localtime(&_cur_time);
 }
