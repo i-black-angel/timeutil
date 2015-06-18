@@ -1,0 +1,8 @@
+timeutil
+========
+
+A cross-platform library that provides a simple API to get and calculate system time. It is designed explicitly to be portable to any platform, including Windows and Linux. 
+
+# Feature Summary
+- multi-platform (Windows 95/98/ME/NT/2K/XP/2003, Windows CE, Linux, Unix)
+
