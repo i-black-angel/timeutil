@@ -1,9 +1,9 @@
 /**
  * @file   timeutil.h
- * @author Shusheng Shao <bluebird.shao@gmail.com>
- * @date   Fri Nov  1 16:42:27 2013
+ * @author Shusheng Shao <iblackangel@163.com>
+ * @date   Thu Jun 18 16:23:43 2015
  * 
- * @brief  Packaging clock/time operations into class TimeUtil
+ * @brief  A cross-platform library that provides a simple API to get and calculate system time
  * 
  * 
  */
@@ -19,9 +19,9 @@ using namespace std;
 # ifndef assert
 #  include <cassert>
 # endif
-# define SI_ASSERT(x)  assert(x)
+# define TU_ASSERT(x)  assert(x)
 #else
-# define SI_ASSERT(x)
+# define TU_ASSERT(x)
 #endif
 
 /**
