@@ -22,10 +22,15 @@ using namespace std;
 # define _tmain     main
 #endif /* _WIN32 */
 
-int main(int argc, char *argv[])
+int _tmain(int argc, TCHAR *argv[])
 {
     CTimeUtil tu_obj;
-	_tprintf(_T("%d\n"), tu_obj.Day());
-	_tprintf(_T("%s\n"), tu_obj.Now().c_str());
+#ifdef _WIN32
+	_tprintf(_T("In _WIN32 environment:\n"));
+#else
+	_tprintf(_T("In non-_WIN32 environment:\n"));
+#endif /* _WIN32 */
+	_tprintf(_T("\nDay: %d\n"), tu_obj.Day());
+	_tprintf(_T("Time: %s\n"), tu_obj.Now().c_str());
     return 0;
 }
