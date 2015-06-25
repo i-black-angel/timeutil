@@ -11,6 +11,7 @@
 #define _TIMEUTIL_H_
 
 #ifdef _MSC_VER
+# pragma warning (push)
 # pragma warning (disable: 4996)
 #endif /* _MSC_VER */
 
@@ -85,14 +86,15 @@ public:
 	int Hour() const;
 	int Minute() const;
 	int Second() const;
-	tm_ptr CurrentTime() const;
 	std::basic_string<CharT> Now() const;
-	std::basic_string<CharT> Yesterday(int year, int month, int day,
-					 int hour = 0, int min = 0, int sec = 0) const;
-	std::basic_string<CharT> Tomorrow(int year, int month, int day,
-					int hour = 0, int min = 0, int sec = 0) const;
 	std::basic_string<CharT> LocalTime(time_t t) const;
 	void Range(time_t t, time_t &begin_of_day, time_t &end_of_day) const;
+protected:
+	// std::basic_string<CharT> Yesterday(int year, int month, int day,
+	// 				 int hour = 0, int min = 0, int sec = 0) const; // disable
+	// std::basic_string<CharT> Tomorrow(int year, int month, int day,
+	// 				int hour = 0, int min = 0, int sec = 0) const; // disable
+	tm_ptr CurrentTime() const;
 private:
 #ifdef _WIN32
 	clock_t m_clock_start;		// In win32, using m_clock_start records the starting of program
@@ -227,5 +229,9 @@ typedef CTimeUtilTempl<wchar_t>     CTimeUtilW;
 #else
 # define CTimeUtil CTimeUtilA
 #endif
+
+#ifdef _MSC_VER
+# pragma warning (pop)
+#endif /* _MSC_VER */
 
 #endif /* _TIMEUTIL_H_ */
